@@ -29,7 +29,6 @@
 
 (defun deal-hand (n pack &optional already-dealt hand)
   "Returns hand of unique cards in range length of `n`"
-  ; TODO hands-dealt
   (if (> n 0) 
     (deal-hand (1- n) pack already-dealt (push (random-element (set-difference pack (append hand already-dealt))) hand))
     hand))
