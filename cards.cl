@@ -12,7 +12,7 @@
 ; Initialise symbolic lookup for gin hand
 (defparameter *gin-values* (make-hash-table))
 ; fill table with values
-; TODO procedurally fil hash table
+; TODO procedurally fill hash table
 (setf (gethash 'A *gin-values*) 1)
 (setf (gethash 'K *gin-values*) 10)
 (setf (gethash 'Q *gin-values*) 10)
@@ -27,11 +27,11 @@
 (setf (gethash '3 *gin-values*) 3)
 (setf (gethash '2 *gin-values*) 2)
 
-(defun deal-hand (n pack &optional hand)
+(defun deal-hand (n pack &optional already-dealt hand)
   "Returns hand of unique cards in range length of `n`"
   ; TODO hands-dealt
   (if (> n 0) 
-    (deal-hand (1- n) pack (push (random-element (set-difference pack hand)) hand))
+    (deal-hand (1- n) pack already-dealt (push (random-element (set-difference pack (append hand already-dealt))) hand))
     hand))
 
 (defun random-element (list)
